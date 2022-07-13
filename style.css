@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  font-family: "Cinzel Decorative", cursive;
+  font-family: "Cinzel Decorative", cursive !important;
   font-weight: 400;
   line-height: 1.6;
   height: 100vh;
@@ -25,6 +25,7 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: 50rem 1fr;
+  /* grid-template-columns: 1fr; */
   row-gap: 1rem;
 }
 
@@ -32,14 +33,18 @@ footer {
   grid-column: 1 / -1;
   align-self: center;
   justify-self: center;
+  z-index: 1000;
 }
-/* .sidebar {
-  flex-basis: 50rem;
-  background-color: blue;
-  padding: 3rem 5rem 4rem 5rem;
-  display: flex;
-  flex-direction: column;
-} */
+.sidebar {
+  font-family: "Cinzel Decorative", cursive !important;
+  /* grid-column: 1 / -1; */
+  /* position: absolute;
+  top: 0;*/
+  z-index: 1000;
+  /* padding: 3rem 5rem 4rem 5rem; */
+  /* display: flex;
+  flex-direction: column; */
+}
 
 .sidebar-header {
   text-align: center;
@@ -63,8 +68,12 @@ footer {
   overflow-x: hidden;
 }
 
-.map {
-  flex: 1;
-  height: 100%;
+#map {
+  /* grid-column: 1 / -1; */
+  /* z-index: 200; */
   /* background-color: red; */
+}
+
+.leaflet-bottom {
+  z-index: 800 !important;
 }
