@@ -36,7 +36,38 @@
           ><img src="./img/icon.png" alt="logo" class="logo" /></span
         ><span class="first-letter">M</span>ap
       </h1>
-      <ul class="adventures"></ul>
+      <ul class="adventures">
+        <form class="form hidden">
+          <div class="form-row">
+            <label class="form-label">Type</label>
+            <select class="form-input form-input--type">
+              <option value="solo">Solo</option>
+              <option value="family">Family</option>
+              <option value="friends">Friends</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Activity Name</label>
+            <input class="form-input form-input--activity"
+            placeholder="Bowling"/>
+          </div>
+            <div class="form-row">
+              <label class="form-label">Duration</label>
+              <input class="form-input form-input--duration"
+              placeholder="min"/>
+            </div>
+
+            <div class="form-row">
+              <label class="form-label">Money Spent</label>
+              <input
+                class="form-input form-input--money"
+                placeholder="dollars"
+              />
+            </div>
+
+        
+        </form>
+      </ul>
     </div>
     <div class="map"></div>
   </body>
