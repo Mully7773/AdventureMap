@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cinzel Decorative", cursive;
+  font-weight: 400;
+  line-height: 1.6;
+  height: 100vh;
+  overscroll-behavior-y: none;
+
+  background-color: #fff;
+  padding: 2.5rem;
+
+  /* display: flex; */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 50rem 1fr;
+  row-gap: 1rem;
+}
+
+footer {
+  grid-column: 1 / -1;
+  align-self: center;
+  justify-self: center;
+}
+/* .sidebar {
+  flex-basis: 50rem;
+  background-color: blue;
+  padding: 3rem 5rem 4rem 5rem;
+  display: flex;
+  flex-direction: column;
+} */
+
+.sidebar-header {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  letter-spacing: 0.3rem;
+}
+.first-letter {
+  font-size: 4rem;
+}
+
+.logo {
+  height: 3rem;
+  padding-right: 0.2rem;
+}
+
+.adventures {
+  list-style: none;
+  height: 77vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.map {
+  flex: 1;
+  height: 100%;
+  background-color: red;
+}
