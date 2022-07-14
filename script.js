@@ -21,7 +21,19 @@ if (navigator.geolocation)
         console.log(mapEvent);
         const { lat, lng } = mapEvent.latlng;
 
-        L.marker([lat, lng]).addTo(map).bindPopup("Adventure!").openPopup();
+        L.marker([lat, lng])
+          .addTo(map)
+          .bindPopup(
+            L.popup({
+              minWidth: 100,
+              maxWidth: 250,
+              autoClose: false,
+              closeOnClick: false,
+              className: "solo-popup",
+            })
+          )
+          .setPopupContent("Adventure!")
+          .openPopup();
       });
     },
     function () {
