@@ -16,14 +16,15 @@ body {
   line-height: 1.6;
   height: 100vh;
   overscroll-behavior-y: none;
-
   background-color: rgb(245, 241, 241);
-  padding: 2.5rem;
+  padding: 1rem;
 
   /* display: flex; */
 }
 
 .grid-container {
+  border: rgba(16, 94, 15, 0.5) ridge 8px;
+
   display: grid;
   grid-template-columns: 50rem 1fr;
   /* grid-template-columns: 1fr; */
@@ -51,17 +52,24 @@ footer {
 
 .sidebar-header {
   font-size: 3.5rem;
+  text-shadow: 0 1.8px #fff;
+  border-radius: 12px;
   margin-bottom: 4rem;
   letter-spacing: 0.3rem;
-}
-
-.first-letter {
-  font-size: 4.5rem;
+  /* background: url("./img/istockphoto-1019262232-170667a.jpg") fixed; */
+  /* box-shadow: 0 0 7px 7px white inset; */
 }
 
 .logo {
-  height: 3rem;
-  padding-right: 0.2rem;
+  height: 3rem !important;
+  padding-right: 0.2rem !important;
+}
+/* img {
+  width: 100px;
+} */
+
+.first-letter {
+  font-size: 4.5rem;
 }
 
 .adventures {
@@ -123,11 +131,11 @@ footer {
   background-color: #ddd5d0;
 }
 
-#map {
-  /* grid-column: 1 / -1; */
-  /* z-index: 200; */
-  /* background-color: red; */
-}
+/* #map { */
+/* grid-column: 1 / -1; */
+/* z-index: 200; */
+/* background-color: red; */
+/* } */
 
 .leaflet-bottom {
   z-index: 800 !important;
