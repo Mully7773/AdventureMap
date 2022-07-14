@@ -11,12 +11,13 @@ html {
 
 body {
   font-family: "Cinzel Decorative", cursive !important;
+  text-rendering: optimizeLegibility !important;
   font-weight: 400;
   line-height: 1.6;
   height: 100vh;
   overscroll-behavior-y: none;
 
-  background-color: #fff;
+  background-color: rgb(245, 241, 241);
   padding: 2.5rem;
 
   /* display: flex; */
@@ -35,25 +36,27 @@ footer {
   justify-self: center;
   z-index: 1000;
 }
+
 .sidebar {
   font-family: "Cinzel Decorative", cursive !important;
   /* grid-column: 1 / -1; */
   /* position: absolute;
   top: 0;*/
   z-index: 1000;
-  /* padding: 3rem 5rem 4rem 5rem; */
-  /* display: flex;
-  flex-direction: column; */
+  padding: 3rem 5rem 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50rem;
 }
 
 .sidebar-header {
-  text-align: center;
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 4rem;
   letter-spacing: 0.3rem;
 }
+
 .first-letter {
-  font-size: 4rem;
+  font-size: 4.5rem;
 }
 
 .logo {
@@ -66,6 +69,58 @@ footer {
   height: 77vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.adventures::-webkit-scrollbar {
+  width: 0;
+}
+
+.form {
+  font-family: "Merriweather Sans", sans-serif;
+  background-color: #586f6b;
+  border-radius: 8px 8px 8px 8px;
+  padding: 1.5rem 2.75rem;
+  margin-bottom: 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 2.5rem;
+  height: 9.25 rem;
+  transition: all 0.5s, transform 1ms;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* .form-hidden {
+  opacity: 0;
+} */
+
+.form-row {
+  display: flex;
+  align-items: center;
+}
+
+/* .form-row--hidden {
+  display: none;
+} */
+
+.form-label {
+  font-size: 1.6rem;
+  flex: 0 0 40%;
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.form-input {
+  width: 100%;
+  font-family: "Times New Roman", Times, serif;
+  padding: 0.4rem 1.2rem;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #ddd5d0;
 }
 
 #map {
