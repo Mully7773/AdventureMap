@@ -189,6 +189,34 @@ body {
 /* background-color: red; */
 /* } */
 
+.leaflet-popup .leaflet-popup-content-wrapper {
+  background-color: #586f6b;
+  color: #ececec;
+  padding-right: 0.6rem;
+  border-radius: 6px;
+}
+
+.leaflet-popup .leaflet-popup-content {
+  font-size: 1.5rem;
+}
+
+.leaflet-popup .leaflet-popup-tip {
+  background-color: #586f6b;
+}
+
+.solo-popup .leaflet-popup-content-wrapper {
+  border-left: 2px solid blue;
+  border-bottom: 2px solid blue;
+}
+.family-popup .leaflet-popup-content-wrapper {
+  border-left: 2px solid red;
+  border-bottom: 2px solid red;
+}
+.friends-popup .leaflet-popup-content-wrapper {
+  border-left: 2px solid green;
+  border-bottom: 2px solid green;
+}
+
 .leaflet-bottom {
   z-index: 800 !important;
 }

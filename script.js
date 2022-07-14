@@ -29,7 +29,7 @@ if (navigator.geolocation)
               maxWidth: 250,
               autoClose: false,
               closeOnClick: false,
-              className: "solo-popup",
+              className: `solo-popup`,
             })
           )
           .setPopupContent("Adventure!")
