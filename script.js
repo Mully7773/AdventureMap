@@ -7,69 +7,73 @@ const inputActivity = document.querySelector(".form-input--activity");
 const inputCost = document.querySelector(".form-input--cost");
 const adventureContainer = document.querySelector(".adventures");
 
-let map, mapEvent;
-
 class App {
+  #map;
+  #mapEvent;
+
   constructor() {
-    this._renderMap();
+    this._findPosition();
+
+    form.addEventListener("submit", this._submitAdventure.bind(this));
   }
 
   _findPosition() {
     if (navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(this._renderMap, function () {
-        alert("Could not get your position");
-      });
+      navigator.geolocation.getCurrentPosition(
+        this._renderMap.bind(this),
+        function () {
+          alert("Could not get your position");
+        }
+      );
   }
 
   _renderMap(position) {
     console.log(position);
-    const { latitude, longitude } = position.coords;
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
     //   console.log(latitude, longitude);
     const coords = [latitude, longitude];
 
-    map = L.map("map", { zoomControl: false }).setView(coords, 13);
+    this.#map = L.map("map", { zoomControl: false }).setView(coords, 13);
 
-    L.control.zoom({ position: "topright" }).addTo(map);
+    L.control.zoom({ position: "topright" }).addTo(this.#map);
 
     L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
       maxZoom: 20,
       subdomains: ["mt0", "mt1", "mt2", "mt3"],
-    }).addTo(map);
+    }).addTo(this.#map);
 
-    map.on("click", function (mapE) {
-      console.log("hello");
-      mapEvent = mapE;
-      form.classList.remove("hidden");
-      inputActivity.focus();
-    });
+    this.#map.on("click", this._renderForm.bind(this));
   }
 
-  _renderForm() {}
+  _renderForm(mapE) {
+    console.log("hello");
+    this.#mapEvent = mapE;
+    form.classList.remove("hidden");
+    inputActivity.focus();
+  }
 
-  _submitAdventure() {
-    form.addEventListener("submit", function (e) {
-      //Display marker
-      // console.log(mapEvent);
-      e.preventDefault();
-      console.log("hello");
-      const { lat, lng } = mapEvent.latlng;
-      L.marker([lat, lng])
-        .addTo(map)
-        .bindPopup(
-          L.popup({
-            minWidth: 100,
-            maxWidth: 250,
-            autoClose: false,
-            closeOnClick: false,
-            className: `solo-popup`,
-          })
-        )
-        .setPopupContent("Adventure!")
-        .openPopup();
-
-      //Clear inputs
-      inputActivity.value = inputCost.value = inputDuration.value = "";
-    });
+  _submitAdventure(e) {
+    //Display marker
+    // console.log(mapEvent);
+    e.preventDefault();
+    console.log("hello");
+    const { lat, lng } = this.#mapEvent.latlng;
+    L.marker([lat, lng])
+      .addTo(this.#map)
+      .bindPopup(
+        L.popup({
+          minWidth: 100,
+          maxWidth: 250,
+          autoClose: false,
+          closeOnClick: false,
+          className: `solo-popup`,
+        })
+      )
+      .setPopupContent("Adventure!")
+      .openPopup();
+    //Clear inputs
+    inputActivity.value = inputCost.value = inputDuration.value = "";
   }
 }
 
