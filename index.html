@@ -26,13 +26,11 @@
     ></script>
 
     <script defer src="script.js"></script>
-    <title>AdventureMap - Map Your Journeys</title>
+    <title>AdventureMap - Map Your Fun</title>
   </head>
   <body>
-    <div class="grid-container" id="map">
-
-
-    <div class="sidebar">
+    <div class="map-container" id="map"></div>
+    <div class="sidebar flex-container">
       <h1 class="sidebar-header">
         <span class="first-letter">A</span>dvenTure<span
           ><img src="./img/icon.png" alt="logo" class="logo" /></span
@@ -51,110 +49,138 @@
 
           <div class="form-row">
             <label class="form-label">Activity</label>
-            <input class="form-input form-input--activity"
-            placeholder="bowling"/>
+            <input
+              class="form-input form-input--activity"
+              placeholder="bowling"
+            />
           </div>
 
           <div class="form-row">
             <label class="form-label">Money</label>
-            <input
-              class="form-input form-input--cost"
-              placeholder="25"/>
+            <input class="form-input form-input--cost" placeholder="25" />
           </div>
 
-            <div class="form-row">
-              <label class="form-label">Duration</label>
-              <input class="form-input form-input--duration"
-              placeholder="min"/>
-            </div>
+          <div class="form-row">
+            <label class="form-label">Duration</label>
+            <input class="form-input form-input--duration" placeholder="min" />
+          </div>
+
+          <!-- We must include this button in order to submit a form with multiple fields (HTML 2 specification) -->
+
+          <button class="form-btn">OK</button>
         </form>
-      
 
-      <!-- <li class="adventure adventure--solo" data-id="1111">
-        <h2 class="adventure-name">(Activity) by myself on July 14</h2>
-        <div class="adventure-details">
-          <span class="adventure-icon">🕺</span>
-          <span class="adventure-value">Solo</span>
-          <span></span>
-        </div>
+        <li class="adventure adventure--solo" data-id="1111">
+          <h2 class="adventure-name">(Activity) by myself on July 14</h2>
+          <div class="adventure-details">
+            <span class="adventure-icon">🕺</span>
+            <span class="adventure-value">Solo</span>
+            <span></span>
+          </div>
 
-        <div class="adventure-details">
-          <span class="adventure-icon">🚶‍♂️</span>
-          <span class="adventure-value">Camping</span>
-          <span></span>
-        </div>
+          <div class="adventure-details">
+            <span class="adventure-icon">🚶‍♂️</span>
+            <span class="adventure-value">Camping</span>
+            <span></span>
+          </div>
 
-        <div class="adventure-details">
-          <span class="adventure-icon">💲</span>
-          <span class="adventure-value">25</span>
-          <span class="adventure-unit"></span>
-        </div>
+          <div class="adventure-details">
+            <span class="adventure-icon">💲</span>
+            <span class="adventure-value">25</span>
+            <span class="adventure-unit"></span>
+          </div>
 
-        <div class="adventure-details">
-          <span class="adventure-icon">⌚</span>
-          <span class="adventure-value">60</span>
-          <span class="adventure-unit">min</span>
-        </div>
-      </li>
+          <div class="adventure-details">
+            <span class="adventure-icon">⌚</span>
+            <span class="adventure-value">60</span>
+            <span class="adventure-unit">min</span>
+          </div>
+        </li>
 
-      <li class="adventure adventure--family" data-id="1112">
-        <h2 class="adventure-name">(Activity) with family on July 14</h2>
-        <div class="adventure-details">
-          <span class="adventure-icon-family">👨‍👩‍👧‍👦</span>
-          <span class="adventure-value">Family</span>
-          <span></span>
-        </div>
+        <li class="adventure adventure--family" data-id="1112">
+          <h2 class="adventure-name">(Activity) with family on July 14</h2>
+          <div class="adventure-details">
+            <span class="adventure-icon-family">👨‍👩‍👧‍👦</span>
+            <span class="adventure-value">Family</span>
+            <span></span>
+          </div>
 
-        <div class="adventure-details">
-          <span class="adventure-icon">🚶‍♂️</span>
-          <span class="adventure-value">Dinner</span>
-          <span></span>
-        </div>
+          <div class="adventure-details">
+            <span class="adventure-icon">🚶‍♂️</span>
+            <span class="adventure-value">Dinner</span>
+            <span></span>
+          </div>
 
-        <div class="adventure-details">
-          <span class="adventure-icon">💲</span>
-          <span class="adventure-value">65</span>
-          <span class="adventure-unit"></span>
-        </div>
+          <div class="adventure-details">
+            <span class="adventure-icon">💲</span>
+            <span class="adventure-value">65</span>
+            <span class="adventure-unit"></span>
+          </div>
 
-        <div class="adventure-details">
-          <span class="adventure-icon">⌚</span>
-          <span class="adventure-value">90</span>
-          <span class="adventure-unit">min</span>
-        </div>
-      </li>
+          <div class="adventure-details">
+            <span class="adventure-icon">⌚</span>
+            <span class="adventure-value">90</span>
+            <span class="adventure-unit">min</span>
+          </div>
+        </li>
 
-      <li class="adventure adventure--friend" data-id="1113">
-        <h2 class="adventure-name">(Activity) with friend on July 14</h2>
-        <div class="adventure-details">
-          <span class="adventure-icon">👫</span>
-          <span class="adventure-value">Friends</span>
-          <span></span>
-        </div>
+        <li class="adventure adventure--friend" data-id="1113">
+          <h2 class="adventure-name">(Activity) with friend on July 14</h2>
+          <div class="adventure-details">
+            <span class="adventure-icon">👫</span>
+            <span class="adventure-value">Friends</span>
+            <span></span>
+          </div>
 
-        <div class="adventure-details">
-          <span class="adventure-icon">🚶‍♂️</span>
-          <span class="adventure-value">Camping</span>
-          <span></span>
-        </div>
+          <div class="adventure-details">
+            <span class="adventure-icon">🚶‍♂️</span>
+            <span class="adventure-value">Camping</span>
+            <span></span>
+          </div>
 
-        <div class="adventure-details">
-          <span class="adventure-icon">💲</span>
-          <span class="adventure-value">25</span>
-          <span class="adventure-unit"></span>
-        </div>
+          <div class="adventure-details">
+            <span class="adventure-icon">💲</span>
+            <span class="adventure-value">25</span>
+            <span class="adventure-unit"></span>
+          </div>
 
-        <div class="adventure-details">
-          <span class="adventure-icon">⌚</span>
-          <span class="adventure-value">90</span>
-          <span class="adventure-unit">min</span>
-        </div>
-      </li> -->
-    </ul>
+          <div class="adventure-details">
+            <span class="adventure-icon">⌚</span>
+            <span class="adventure-value">90</span>
+            <span class="adventure-unit">min</span>
+          </div>
+        </li>
+
+        <li class="adventure adventure--friend" data-id="1113">
+          <h2 class="adventure-name">(Activity) with friend on July 14</h2>
+          <div class="adventure-details">
+            <span class="adventure-icon">👫</span>
+            <span class="adventure-value">Friends</span>
+            <span></span>
+          </div>
+
+          <div class="adventure-details">
+            <span class="adventure-icon">🚶‍♂️</span>
+            <span class="adventure-value">Camping</span>
+            <span></span>
+          </div>
+
+          <div class="adventure-details">
+            <span class="adventure-icon">💲</span>
+            <span class="adventure-value">25</span>
+            <span class="adventure-unit"></span>
+          </div>
+
+          <div class="adventure-details">
+            <span class="adventure-icon">⌚</span>
+            <span class="adventure-value">90</span>
+            <span class="adventure-unit">min</span>
+          </div>
+        </li>
+      </ul>
     </div>
-      <!-- <div id="map"></div>    -->
+    <!-- <div id="map"></div> -->
   </body>
-</div>
   <footer>
     All icons by <a target="_blank" href="https://icons8.com">Icons8</a>
   </footer>
