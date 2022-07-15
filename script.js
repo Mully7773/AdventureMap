@@ -7,6 +7,16 @@ const inputActivity = document.querySelector(".form-input--activity");
 const inputCost = document.querySelector(".form-input--cost");
 const adventureContainer = document.querySelector(".adventures");
 
+class Adventure {
+  date = new Date();
+
+  constructor(coords, activity, cost, duration) {
+    this.coords = coords;
+    this.activity = activity; //string
+    this.cost = cost; // number
+    this.duration = duration; // number in minutes
+  }
+}
 class App {
   #map;
   #mapEvent;
