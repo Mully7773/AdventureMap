@@ -37,11 +37,12 @@ class Friends extends Adventure {
   }
 }
 
-const solo1 = new Solo([34, 52], "Bowling", 77, 120);
-const family1 = new Family([34, 52.5], "Camping", 200, 500);
-const friends1 = new Friends([34, 53], "Arcade", 85, 300);
+//Test data:
+// const solo1 = new Solo([34, 52], "Bowling", 77, 120);
+// const family1 = new Family([34, 52.5], "Camping", 200, 500);
+// const friends1 = new Friends([34, 53], "Arcade", 85, 300);
 
-console.log(solo1, family1, friends1);
+// console.log(solo1, family1, friends1);
 
 class App {
   #map;
@@ -90,10 +91,58 @@ class App {
   }
 
   _submitAdventure(e) {
-    //Display marker
     // console.log(mapEvent);
     e.preventDefault();
-    console.log("hello");
+
+    // Get data from form
+    const type = inputType.value;
+    const activity = inputActivity.value;
+    const cost = +inputCost.value;
+    const duration = +inputDuration.value;
+
+    // Data validation
+
+    // If activity is solo, create solo object
+    if (type === "solo") {
+      // if (cost === null || duration === null || activity === "") {
+      //   alert("Please fill all fields");
+      // }
+
+      if (!Number.isFinite(cost) || cost < 0)
+        return alert("Please input a positive number or zero");
+
+      console.log(cost);
+    }
+    if (!Number.isFinite(duration) || duration <= 0) {
+      return alert(
+        "Please input the approximate number of minutes you spent having fun"
+      );
+    }
+
+    // If activity is family, create family object
+    if (type === "family") {
+      if (!Number.isFinite(cost) || cost < 0)
+        return alert("Please input a positive number or zero");
+    }
+    if (!Number.isFinite(duration)) {
+      return alert(
+        "Please input the approximate number of minutes you spent having fun"
+      );
+    }
+
+    // If activity is friend, create friend object
+    if (type === "friends") {
+      if (!Number.isFinite(cost) || cost < 0)
+        return alert("Please input a positive amount of moolah or zero");
+    }
+    if (!Number.isFinite(duration)) {
+      return alert(
+        "Please input the approximate number of minutes you spent having fun"
+      );
+    }
+    //Add new activity to workout array
+
+    //Render activity on map as marker
     const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
       .addTo(this.#map)
@@ -108,6 +157,9 @@ class App {
       )
       .setPopupContent("Adventure!")
       .openPopup();
+
+    //Render activity on list
+
     //Clear inputs
     inputActivity.value = inputCost.value = inputDuration.value = "";
   }
