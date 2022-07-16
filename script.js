@@ -7,6 +7,20 @@ const inputActivity = document.querySelector(".form-input--activity");
 const inputCost = document.querySelector(".form-input--cost");
 const adventureContainer = document.querySelector(".adventures");
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 class Adventure {
   date = new Date();
   id = uuidv4(); // Unique ID
@@ -19,23 +33,6 @@ class Adventure {
   }
 
   _setDescription() {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    // Bowling by myself on July 16
-    // ${this.type[0].toUpperCase()}${this.type.slice(1)}
-
     this.description = `${this.activity[0].toUpperCase()}${this.activity.slice(
       1
     )} ${
@@ -203,7 +200,17 @@ class App {
           className: `${adventure.type}-popup`,
         })
       )
-      .setPopupContent("Adventure!")
+      .setPopupContent(
+        `${
+          adventure.type === "solo"
+            ? "🕺"
+            : adventure.type === "family"
+            ? "👨‍👩‍👧‍👦"
+            : "👫"
+        } ${adventure.activity[0].toUpperCase()}${adventure.activity.slice(
+          1
+        )} - ${months[adventure.date.getMonth()]} ${adventure.date.getDate()}`
+      )
       .openPopup();
   }
 
