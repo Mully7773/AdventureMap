@@ -44,8 +44,7 @@ class Adventure {
         : this.type === "family"
         ? "with family"
         : "with friend(s)"
-    }
-on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
+    } on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
   }
 }
 
@@ -127,6 +126,14 @@ class App {
     inputActivity.focus();
   }
 
+  _hideForm() {
+    //Empty inputs
+    inputActivity.value = inputCost.value = inputDuration.value = "";
+    form.style.display = "none";
+    form.classList.add("hidden");
+    setTimeout(() => (form.style.display = "grid"), 1000);
+  }
+
   _submitAdventure(e) {
     // console.log(mapEvent);
     e.preventDefault();
@@ -179,7 +186,7 @@ class App {
     this._renderAdventure(adventure);
 
     //Clear inputs
-    inputActivity.value = inputCost.value = inputDuration.value = "";
+    this._hideForm();
   }
 
   _renderAdventureMarker(adventure) {
