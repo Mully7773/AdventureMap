@@ -47,6 +47,7 @@ class Friends extends Adventure {
 class App {
   #map;
   #mapEvent;
+  #adventures = [];
 
   constructor() {
     this._findPosition();
@@ -99,6 +100,8 @@ class App {
     const activity = inputActivity.value;
     const cost = +inputCost.value;
     const duration = +inputDuration.value;
+    const { lat, lng } = this.#mapEvent.latlng;
+    let adventure;
 
     // Data validation
     if (type === "solo" || type === "family" || type === "friends") {
@@ -108,23 +111,32 @@ class App {
       }
       if (!Number.isFinite(cost) || cost < 0)
         return alert("Please input a positive number or zero");
-    }
-    if (!Number.isFinite(duration) || duration <= 0) {
-      return alert(
-        "Please input the approximate number of minutes you spent having fun"
-      );
+
+      if (!Number.isFinite(duration) || duration <= 0) {
+        return alert(
+          "Please input the approximate number of minutes you spent having fun"
+        );
+      }
     }
 
     // If activity is solo, create solo object
-
+    if (type === "solo") {
+      adventure = new Solo([lat, lng], activity, cost, duration);
+    }
     // If activity is family, create family object
+    if (type === "family") {
+      adventure = new Family([lat, lng], activity, cost, duration);
+    }
 
     // If activity is friend, create friend object
+    if (type === "friends") {
+      adventure = new Friends([lat, lng], activity, cost, duration);
+    }
 
     //Add new activity to workout array
-
+    this.#adventures.push(adventure);
+    console.log(adventure);
     //Render activity on map as marker
-    const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
       .addTo(this.#map)
       .bindPopup(
