@@ -17,12 +17,34 @@ class Adventure {
     this.cost = cost; // number
     this.duration = duration; // number in minutes
   }
+
+  _setDescription() {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${
+      months[this.date.getMonth()]
+    } ${this.date.getDate()}`;
+  }
 }
 
 class Solo extends Adventure {
   type = "solo";
   constructor(coords, activity, cost, duration) {
     super(coords, activity, cost, duration);
+    this._setDescription();
   }
 }
 
@@ -30,6 +52,7 @@ class Family extends Adventure {
   type = "family";
   constructor(coords, activity, cost, duration) {
     super(coords, activity, cost, duration);
+    this._setDescription();
   }
 }
 
@@ -37,6 +60,7 @@ class Friends extends Adventure {
   type = "friends";
   constructor(coords, activity, cost, duration) {
     super(coords, activity, cost, duration);
+    this._setDescription();
   }
 }
 
@@ -136,19 +160,20 @@ class App {
       adventure = new Friends([lat, lng], activity, cost, duration);
     }
 
-    //Add new activity to workout array
+    //Add new activity to adventure array
     this.#adventures.push(adventure);
     console.log(adventure);
 
     //Render marker on map
-    this.renderAdventureMarker(adventure);
+    this._renderAdventureMarker(adventure);
     //Render activity on list
+    this._renderAdventure(adventure);
 
     //Clear inputs
     inputActivity.value = inputCost.value = inputDuration.value = "";
   }
 
-  renderAdventureMarker(adventure) {
+  _renderAdventureMarker(adventure) {
     L.marker(adventure.coords)
       .addTo(this.#map)
       .bindPopup(
@@ -162,6 +187,50 @@ class App {
       )
       .setPopupContent("Adventure!")
       .openPopup();
+  }
+
+  _renderAdventure(adventure) {
+    const html = `<li class="adventure adventure--${adventure.type}" data-id="${
+      adventure.id
+    }">
+    <h2 class="adventure-name">${adventure.description}</h2>
+    <div class="adventure-details">
+      <span class="adventure-icon">${
+        adventure.type === "solo"
+          ? "🕺"
+          : adventure.type === "family"
+          ? "👨‍👩‍👧‍👦"
+          : "👫"
+      }</span>
+      <span class="adventure-value">${adventure.type[0].toUpperCase()}${adventure.type.slice(
+      1
+    )}</span>
+      <span></span>
+    </div>
+
+    <div class="adventure-details">
+      <span class="adventure-icon">🚶‍♂️</span>
+      <span class="adventure-value">${adventure.activity[0].toUpperCase()}${adventure.activity.slice(
+      1
+    )}
+      </span>
+      <span></span>
+    </div>
+
+    <div class="adventure-details">
+      <span class="adventure-icon">💲</span>
+      <span class="adventure-value">${adventure.cost}</span>
+      <span class="adventure-unit"></span>
+    </div>
+
+    <div class="adventure-details">
+      <span class="adventure-icon">⌚</span>
+      <span class="adventure-value">${adventure.duration}</span>
+      <span class="adventure-unit">min</span>
+    </div>
+  </li>`;
+
+    form.insertAdjacentHTML("afterend", html);
   }
 }
 
