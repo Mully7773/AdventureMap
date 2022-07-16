@@ -148,8 +148,10 @@ class App {
 
     // Data validation
     if (type === "solo" || type === "family" || type === "friends") {
-      if (!activity.trim()) {
-        alert("Please input your fun activity");
+      if (!activity.trim() || activity.length > 10) {
+        alert(
+          "Please input an activity less than 10 characters. Brevity is the soul of wit!"
+        );
         return false;
       }
       if (!Number.isFinite(cost) || cost < 0)
