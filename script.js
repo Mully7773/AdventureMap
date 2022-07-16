@@ -101,17 +101,13 @@ class App {
     const duration = +inputDuration.value;
 
     // Data validation
-
-    // If activity is solo, create solo object
-    if (type === "solo") {
-      // if (cost === null || duration === null || activity === "") {
-      //   alert("Please fill all fields");
-      // }
-
+    if (type === "solo" || type === "family" || type === "friends") {
+      if (!activity.trim()) {
+        alert("Please input your fun activity");
+        return false;
+      }
       if (!Number.isFinite(cost) || cost < 0)
         return alert("Please input a positive number or zero");
-
-      console.log(cost);
     }
     if (!Number.isFinite(duration) || duration <= 0) {
       return alert(
@@ -119,27 +115,12 @@ class App {
       );
     }
 
+    // If activity is solo, create solo object
+
     // If activity is family, create family object
-    if (type === "family") {
-      if (!Number.isFinite(cost) || cost < 0)
-        return alert("Please input a positive number or zero");
-    }
-    if (!Number.isFinite(duration)) {
-      return alert(
-        "Please input the approximate number of minutes you spent having fun"
-      );
-    }
 
     // If activity is friend, create friend object
-    if (type === "friends") {
-      if (!Number.isFinite(cost) || cost < 0)
-        return alert("Please input a positive amount of moolah or zero");
-    }
-    if (!Number.isFinite(duration)) {
-      return alert(
-        "Please input the approximate number of minutes you spent having fun"
-      );
-    }
+
     //Add new activity to workout array
 
     //Render activity on map as marker
