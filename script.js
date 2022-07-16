@@ -20,18 +20,21 @@ class Adventure {
 }
 
 class Solo extends Adventure {
+  type = "solo";
   constructor(coords, activity, cost, duration) {
     super(coords, activity, cost, duration);
   }
 }
 
 class Family extends Adventure {
+  type = "family";
   constructor(coords, activity, cost, duration) {
     super(coords, activity, cost, duration);
   }
 }
 
 class Friends extends Adventure {
+  type = "friends";
   constructor(coords, activity, cost, duration) {
     super(coords, activity, cost, duration);
   }
@@ -136,8 +139,17 @@ class App {
     //Add new activity to workout array
     this.#adventures.push(adventure);
     console.log(adventure);
-    //Render activity on map as marker
-    L.marker([lat, lng])
+
+    //Render marker on map
+    this.renderAdventureMarker(adventure);
+    //Render activity on list
+
+    //Clear inputs
+    inputActivity.value = inputCost.value = inputDuration.value = "";
+  }
+
+  renderAdventureMarker(adventure) {
+    L.marker(adventure.coords)
       .addTo(this.#map)
       .bindPopup(
         L.popup({
@@ -145,16 +157,11 @@ class App {
           maxWidth: 250,
           autoClose: false,
           closeOnClick: false,
-          className: `solo-popup`,
+          className: `${adventure.type}-popup`,
         })
       )
       .setPopupContent("Adventure!")
       .openPopup();
-
-    //Render activity on list
-
-    //Clear inputs
-    inputActivity.value = inputCost.value = inputDuration.value = "";
   }
 }
 
