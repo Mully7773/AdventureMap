@@ -33,10 +33,19 @@ class Adventure {
       "November",
       "December",
     ];
+    // Bowling by myself on July 16
+    // ${this.type[0].toUpperCase()}${this.type.slice(1)}
 
-    this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${
-      months[this.date.getMonth()]
-    } ${this.date.getDate()}`;
+    this.description = `${this.activity[0].toUpperCase()}${this.activity.slice(
+      1
+    )} ${
+      this.type === "solo"
+        ? "by myself"
+        : this.type === "family"
+        ? "with family"
+        : "with friend(s)"
+    }
+on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
   }
 }
 
