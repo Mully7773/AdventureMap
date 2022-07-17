@@ -78,13 +78,14 @@ class Friends extends Adventure {
 
 class App {
   #map;
+  #mapZoomLevel = 13;
   #mapEvent;
   #adventures = [];
 
   constructor() {
     this._findPosition();
     form.addEventListener("submit", this._submitAdventure.bind(this));
-    adventureContainer.addEventListener("click", this._moveToPopup);
+    adventureContainer.addEventListener("click", this._moveToPopup.bind(this));
   }
 
   _findPosition() {
@@ -104,7 +105,10 @@ class App {
     //   console.log(latitude, longitude);
     const coords = [latitude, longitude];
 
-    this.#map = L.map("map", { zoomControl: false }).setView(coords, 13);
+    this.#map = L.map("map", { zoomControl: false }).setView(
+      coords,
+      this.#mapZoomLevel
+    );
 
     L.control.zoom({ position: "topright" }).addTo(this.#map);
 
@@ -264,10 +268,17 @@ class App {
 
     if (!adventureEl) return;
 
-    // const adventure = this.#adventures.find(
-    //   (advent) => advent.id === adventureEl.dataset.id
-    // );
-    // console.log(adventure);
+    const adventure = this.#adventures.find(
+      (advent) => advent.id === adventureEl.dataset.id
+    );
+    console.log(adventure);
+
+    this.#map.setView(adventure.coords, this.#mapZoomLevel, {
+      animate: true,
+      pan: {
+        duration: 1,
+      },
+    });
   }
 }
 
