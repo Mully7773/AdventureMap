@@ -354,8 +354,12 @@ class App {
 
     this.#adventures.forEach((advent) => {
       this._renderAdventure(advent);
-      // this._renderAdventureMarker(advent);
     });
+  }
+
+  reset() {
+    localStorage.removeItem("adventures");
+    location.reload();
   }
 }
 
