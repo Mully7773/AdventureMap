@@ -32,6 +32,10 @@ class Adventure {
     this.duration = duration; // number in minutes
   }
 
+  //In order to use it in popup content
+  _setDate() {
+    this.currentDate = `${months[this.date.getMonth()]} ${this.date.getDate()}`;
+  }
   _setDescription() {
     this.description = `${this.activity[0].toUpperCase()}${this.activity.slice(
       1
@@ -50,6 +54,7 @@ class Solo extends Adventure {
   constructor(coords, activity, cost, duration) {
     super(coords, activity, cost, duration);
     this._setDescription();
+    this._setDate();
   }
 }
 
@@ -58,6 +63,7 @@ class Family extends Adventure {
   constructor(coords, activity, cost, duration) {
     super(coords, activity, cost, duration);
     this._setDescription();
+    this._setDate();
   }
 }
 
@@ -66,6 +72,7 @@ class Friends extends Adventure {
   constructor(coords, activity, cost, duration) {
     super(coords, activity, cost, duration);
     this._setDescription();
+    this._setDate();
   }
 }
 
@@ -161,6 +168,11 @@ class App {
     // );
 
     this.#map.on("click", this._renderForm.bind(this));
+
+    //(For local storage) - Must render markers here because we cannot render the marker as soon as the page loads because the map hasn't finished rendering yet
+    this.#adventures.forEach((advent) => {
+      this._renderAdventureMarker(advent);
+    });
   }
 
   _renderForm(mapE) {
@@ -259,7 +271,8 @@ class App {
             : "👫"
         } ${adventure.activity[0].toUpperCase()}${adventure.activity.slice(
           1
-        )} - ${months[adventure.date.getMonth()]} ${adventure.date.getDate()}`
+        )} - 
+        ${adventure.currentDate}`
       )
       .openPopup();
   }
@@ -341,6 +354,7 @@ class App {
 
     this.#adventures.forEach((advent) => {
       this._renderAdventure(advent);
+      // this._renderAdventureMarker(advent);
     });
   }
 }
