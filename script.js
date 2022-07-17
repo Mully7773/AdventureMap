@@ -83,8 +83,8 @@ class App {
 
   constructor() {
     this._findPosition();
-
     form.addEventListener("submit", this._submitAdventure.bind(this));
+    adventureContainer.addEventListener("click", this._moveToPopup);
   }
 
   _findPosition() {
@@ -256,6 +256,18 @@ class App {
   </li>`;
 
     form.insertAdjacentHTML("afterend", html);
+  }
+
+  _moveToPopup(e) {
+    const adventureEl = e.target.closest(".adventure");
+    console.log(adventureEl);
+
+    if (!adventureEl) return;
+
+    // const adventure = this.#adventures.find(
+    //   (advent) => advent.id === adventureEl.dataset.id
+    // );
+    // console.log(adventure);
   }
 }
 

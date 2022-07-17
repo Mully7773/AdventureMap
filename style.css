@@ -128,7 +128,8 @@ footer {
 }
 
 .adventure-name {
-  font-size: 1.7rem;
+  letter-spacing: 0.1rem;
+  font-size: 1.6rem;
   font-weight: 600;
   grid-column: 1 / -1;
 }
@@ -178,6 +179,7 @@ footer {
 
 .form.hidden {
   height: 0;
+  transform: translateY(-30rem);
   padding: 0 2.25rem;
   margin-bottom: 0;
   opacity: 0;
@@ -188,9 +190,9 @@ footer {
   align-items: center;
 }
 
-/* .form-row--hidden {
+.form-row--hidden {
   display: none;
-} */
+}
 
 .form-label {
   font-size: 1.6rem;
