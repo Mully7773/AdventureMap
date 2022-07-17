@@ -83,8 +83,15 @@ class App {
   #adventures = [];
 
   constructor() {
+    //Get user position
     this._findPosition();
+
+    //Get data from local storage
+    this._getLocalStorage();
+
+    //Create new adventure
     form.addEventListener("submit", this._submitAdventure.bind(this));
+    //Move to popup functionality
     adventureContainer.addEventListener("click", this._moveToPopup.bind(this));
   }
 
@@ -226,6 +233,9 @@ class App {
 
     //Clear inputs
     this._hideForm();
+
+    //Save to local storage
+    this._setLocalStorage();
   }
 
   _renderAdventureMarker(adventure) {
@@ -314,6 +324,23 @@ class App {
       pan: {
         duration: 1,
       },
+    });
+  }
+
+  _setLocalStorage() {
+    localStorage.setItem("adventures", JSON.stringify(this.#adventures));
+  }
+
+  _getLocalStorage() {
+    const adventureData = JSON.parse(localStorage.getItem("adventures"));
+    console.log(adventureData);
+
+    if (!adventureData) return;
+
+    this.#adventures = adventureData;
+
+    this.#adventures.forEach((advent) => {
+      this._renderAdventure(advent);
     });
   }
 }
