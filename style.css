@@ -39,15 +39,16 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   border: rgba(16, 94, 15, 0.5) ridge 8px;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
+  margin-bottom: 1rem;
+  /* display: grid;
+  grid-template-columns: 1fr; */
   /* grid-template-columns: 1fr; */
   /* row-gap: 1rem; */
 }
 
 .flex-container {
   width: 490px;
-  height: 600px;
+  height: 100vh;
   /* background-color: red; */
   position: absolute;
   top: 0;
@@ -59,10 +60,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 footer {
-  grid-column: 1 / -1;
-  align-self: center;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* grid-column: 1 / -1; */
+  /* align-self: center;
   justify-self: center;
-  z-index: 1000;
+  z-index: 1000; */
 }
 
 .sidebar {
@@ -93,9 +99,6 @@ footer {
   height: 3rem !important;
   padding-right: 0.2rem !important;
 }
-/* img {
-  width: 100px;
-} */
 
 .first-letter {
   font-size: 4.5rem;
@@ -103,7 +106,7 @@ footer {
 
 .adventures {
   list-style: none;
-  height: 77vh;
+  /* height: 100vh; */
   overflow-y: scroll;
   overflow-x: hidden;
 }
