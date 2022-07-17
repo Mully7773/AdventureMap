@@ -119,15 +119,16 @@ footer {
   font-family: "Merriweather Sans", sans-serif;
   background-color: #586f6b;
   border-radius: 8px 8px 8px 8px;
-  padding: 1.5rem 2.25rem;
+  padding: 0 1rem 1.5rem 2.25rem;
   margin-bottom: 1.75rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 0.75rem 1.5rem;
+  gap: 0.75rem 1.25rem;
   height: 9.25 rem;
   transition: all 0.5s, transform 1ms;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  /* margin-top: -0.25rem; */
 }
 
 .adventure-name {
@@ -135,6 +136,7 @@ footer {
   font-size: 1.6rem;
   font-weight: 600;
   grid-column: 1 / -1;
+  margin-top: -0.5rem;
 }
 
 .adventure-details {
@@ -177,6 +179,20 @@ footer {
 .adventure--friends {
   border-left: 2px solid green;
   border-bottom: 2px solid green;
+}
+
+button {
+  width: 15px;
+  height: 16px;
+  background-color: #586f6b;
+  border: none;
+  justify-self: flex-end;
+  grid-column: 4 / 5;
+  margin-top: 5px;
+  cursor: pointer;
+}
+button:hover {
+  color: white;
 }
 
 .form {

@@ -281,6 +281,7 @@ class App {
     const html = `<li class="adventure adventure--${adventure.type}" data-id="${
       adventure.id
     }">
+    <button>&#10006</button>
     <h2 class="adventure-name">${adventure.description}</h2>
     <div class="adventure-details">
       <span class="adventure-icon">${
