@@ -166,6 +166,19 @@ footer {
   font-weight: 800;
 }
 
+.adventure--solo {
+  border-left: 2px solid blue;
+  border-bottom: 2px solid blue;
+}
+.adventure--family {
+  border-left: 2px solid red;
+  border-bottom: 2px solid red;
+}
+.adventure--friends {
+  border-left: 2px solid green;
+  border-bottom: 2px solid green;
+}
+
 .form {
   font-family: "Merriweather Sans", sans-serif;
   background-color: #586f6b;
