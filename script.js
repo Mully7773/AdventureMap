@@ -117,6 +117,42 @@ class App {
       subdomains: ["mt0", "mt1", "mt2", "mt3"],
     }).addTo(this.#map);
 
+    // L.basemapsSwitcher(
+    //   [
+    //     {
+    //       layer: L.tileLayer(
+    //         "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    //         {
+    //           attribution:
+    //             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    //         }
+    //       ).addTo(this.#map), //DEFAULT MAP
+    //       icon: "first",
+    //       name: "Map one",
+    //     },
+    //     {
+    //       layer: L.tileLayer(
+    //         "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
+    //         {
+    //           attribution:
+    //             '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    //         }
+    //       ),
+    //       icon: "second",
+    //       name: "Map two",
+    //     },
+    //   ],
+    //   { position: "bottomright" }
+    // ).addTo(this.#map);
+
+    // const googleSatellite = L.tileLayer(
+    //   "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+    //   {
+    //     maxZoom: 20,
+    //     subdomains: ["mt0", "mt1", "mt2", "mt3"],
+    //   }
+    // );
+
     this.#map.on("click", this._renderForm.bind(this));
   }
 
