@@ -31,13 +31,13 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(17, 79, 17);
+  background-color: #397367;
   outline: 1px solid black;
 }
 
 .map-container {
   position: relative;
-  border: rgba(16, 94, 15, 0.5) ridge 8px;
+  border: #397367 ridge 8px;
   height: 100%;
   margin-bottom: 1rem;
   /* display: grid;
@@ -116,7 +116,7 @@ footer {
 
 .adventure {
   font-family: "Merriweather Sans", sans-serif;
-  background-color: #586f6b;
+  background-color: #3f4e4f;
   border-radius: 8px 8px 8px 8px;
   padding: 0 1rem 1.5rem 2.25rem;
   margin-bottom: 1.75rem;
@@ -168,22 +168,22 @@ footer {
 }
 
 .adventure--solo {
-  border-left: 2px solid blue;
-  border-bottom: 2px solid blue;
+  border-left: 2px solid rgb(54, 54, 198);
+  border-bottom: 2px solid rgb(54, 54, 198);
 }
 .adventure--family {
-  border-left: 2px solid red;
-  border-bottom: 2px solid red;
+  border-left: 2px solid rgb(244, 12, 12);
+  border-bottom: 2px solid rgb(244, 12, 12);
 }
 .adventure--friends {
-  border-left: 2px solid green;
-  border-bottom: 2px solid green;
+  border-left: 2px solid rgb(5, 94, 5);
+  border-bottom: 2px solid rgb(5, 94, 5);
 }
 
 #close-button {
   width: 15px;
   height: 16px;
-  background-color: #586f6b;
+  background-color: #3f4e4f;
   border: none;
   justify-self: flex-end;
   grid-column: 4 / 5;
@@ -196,7 +196,7 @@ footer {
 
 .form {
   font-family: "Merriweather Sans", sans-serif;
-  background-color: #586f6b;
+  background-color: #2c3639;
   border-radius: 8px 8px 8px 8px;
   padding: 1.5rem 2.75rem;
   margin-bottom: 3.25rem;
@@ -213,7 +213,7 @@ footer {
 }
 
 .clear-all {
-  background-color: #586f6b;
+  background-color: #2c3639;
   border: none;
   border-radius: 8px 8px 8px 8px;
   padding: 0.75rem 1.5rem;
@@ -275,7 +275,7 @@ footer {
 
 /* Leaflet styles: */
 .leaflet-popup .leaflet-popup-content-wrapper {
-  background-color: #586f6b;
+  background-color: #3f4e4f;
   color: #ececec;
   padding-right: 0.6rem;
   border-radius: 6px;
@@ -286,20 +286,20 @@ footer {
 }
 
 .leaflet-popup .leaflet-popup-tip {
-  background-color: #586f6b;
+  background-color: #3f4e4f;
 }
 
 .solo-popup .leaflet-popup-content-wrapper {
-  border-left: 2px solid blue;
-  border-bottom: 2px solid blue;
+  border-left: 2px solid rgb(54, 54, 198);
+  border-bottom: 2px solid rgb(54, 54, 198);
 }
 .family-popup .leaflet-popup-content-wrapper {
-  border-left: 2px solid red;
-  border-bottom: 2px solid red;
+  border-left: 2px solid rgb(244, 12, 12);
+  border-bottom: 2px solid rgb(244, 12, 12);
 }
 .friends-popup .leaflet-popup-content-wrapper {
-  border-left: 2px solid green;
-  border-bottom: 2px solid green;
+  border-left: 2px solid rgb(5, 94, 5);
+  border-bottom: 2px solid rgb(5, 94, 5);
 }
 
 img.color-change-solo {
@@ -309,7 +309,7 @@ img.color-change-family {
   filter: hue-rotate(145deg);
 }
 img.color-change-friends {
-  filter: hue-rotate(250deg);
+  filter: hue-rotate(275deg);
 }
 
 .leaflet-bottom {
