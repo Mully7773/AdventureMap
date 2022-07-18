@@ -6,7 +6,9 @@ const inputDuration = document.querySelector(".form-input--duration");
 const inputActivity = document.querySelector(".form-input--activity");
 const inputCost = document.querySelector(".form-input--cost");
 const adventureContainer = document.querySelector(".adventures");
+const liContainer = document.querySelector(".adventure");
 const closeButton = document.querySelector(".close-button");
+const closeButtonContainer = document.querySelector(".close-button-container");
 const clearAll = document.querySelector(".clear-all");
 
 console.log(adventureContainer);
@@ -104,9 +106,9 @@ class App {
     //Move to popup functionality
     adventureContainer.addEventListener("click", this._moveToPopup.bind(this));
 
-    // closeButton.addEventListener("click", this._deleteAdventure().bind(this));
-
     clearAll.addEventListener("click", this.reset);
+
+    document.addEventListener("click", this._deleteAdventure.bind(this));
   }
 
   _findPosition() {
@@ -183,7 +185,7 @@ class App {
   }
 
   _renderForm(mapE) {
-    console.log("hello");
+    // console.log("hello");
     this.#mapEvent = mapE;
     form.classList.remove("hidden");
     inputActivity.focus();
@@ -289,7 +291,8 @@ class App {
     const html = `<li class="adventure adventure--${adventure.type}" data-id="${
       adventure.id
     }">
-    <button class="close-button">&#10006</button>
+    <button id="close-button">&#10006</button>
+   
     <h2 class="adventure-name">${adventure.description}</h2>
     <div class="adventure-details">
       <span class="adventure-icon">${
@@ -349,6 +352,32 @@ class App {
     });
   }
 
+  _deleteAdventure(e) {
+    const adventureData = JSON.parse(localStorage.getItem("adventures"));
+    // if (!adventureData) return;
+    if (e.target && e.target.id == "close-button") {
+      // console.log("hi");
+      if (confirm("Are you sure you wish to delete this adventure?")) {
+        const adventureEl = e.target.closest(".adventure");
+
+        // if (!adventureEl) return;
+        const adventure = this.#adventures.find(
+          (advent) => advent.id === adventureEl.dataset.id
+        );
+        console.log(adventure.id);
+
+        const filteredData = adventureData.filter(
+          (advent) => advent.id !== adventureEl.dataset.id
+        );
+
+        localStorage.setItem("adventures", JSON.stringify(filteredData));
+
+        adventureEl.classList.add("hidden");
+      }
+      location.reload();
+    }
+  }
+
   _setLocalStorage() {
     localStorage.setItem("adventures", JSON.stringify(this.#adventures));
   }
@@ -373,15 +402,6 @@ class App {
     }
     // let store = JSON.parse(localStorage.getItem("adventures")) || [];
   }
-
-  // _deleteAdventure(e) {
-  //   console.log(e.target);
-  //   const adventureEl = e.target.closest(".adventure");
-  //   console.log(adventureEl);
-
-  //   if (!adventureEl) return;
-
-  //   adventureEl.classList.add("hidden");
 
   //   console.log("delete");
   // e.stopPropagation();
@@ -416,15 +436,15 @@ class App {
 // };
 // deleteAdventure();
 
-closeButton.addEventListener("click", function (e) {
-  console.log(e.target);
-  const adventureEl = e.target.closest(".adventure");
-  console.log(adventureEl);
+// closeButton.addEventListener("click", function (e) {
+//   console.log(e.target);
+//   const adventureEl = e.target.closest(".adventure");
+//   console.log(adventureEl);
+//   console.log("Bweeeeeeeeeeeeeeeeeeeeeeeeeee!");
+//   if (!adventureEl) return;
 
-  if (!adventureEl) return;
-
-  adventureEl.classList.add("hidden");
-});
+//   adventureEl.classList.add("hidden");
+// });
 
 console.log(closeButton);
 const app = new App();
