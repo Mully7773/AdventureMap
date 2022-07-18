@@ -260,7 +260,7 @@ class App {
   }
 
   _renderAdventureMarker(adventure) {
-    L.marker(adventure.coords)
+    let myMarker = L.marker(adventure.coords)
       .addTo(this.#map)
       .bindPopup(
         L.popup({
@@ -284,6 +284,15 @@ class App {
         ${adventure.currentDate}`
       )
       .openPopup();
+    if (adventure.type === "solo") {
+      myMarker._icon.classList.add("color-change-solo");
+    }
+    if (adventure.type === "family") {
+      myMarker._icon.classList.add("color-change-family");
+    }
+    if (adventure.type === "friends") {
+      myMarker._icon.classList.add("color-change-friends");
+    }
   }
 
   _renderAdventure(adventure) {
