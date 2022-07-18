@@ -89,7 +89,6 @@ footer {
   font-size: 3.5rem;
   text-shadow: 0 1.9px #fff;
   border-radius: 12px;
-  margin-bottom: 4rem;
   letter-spacing: 0.3rem;
   /* background: url("./img/istockphoto-1019262232-170667a.jpg") fixed; */
   /* box-shadow: 0 0 7px 7px white inset; */
@@ -181,7 +180,7 @@ footer {
   border-bottom: 2px solid green;
 }
 
-button {
+.close-button {
   width: 15px;
   height: 16px;
   background-color: #586f6b;
@@ -191,7 +190,7 @@ button {
   margin-top: 5px;
   cursor: pointer;
 }
-button:hover {
+.close-button:hover {
   color: white;
 }
 
@@ -207,6 +206,23 @@ button:hover {
   height: 9.25 rem;
   transition: all 0.5s, transform 1ms;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+  display: none;
+}
+
+.clear-all {
+  background-color: #586f6b;
+  border: none;
+  border-radius: 8px 8px 8px 8px;
+  padding: 0.75rem 1.5rem;
+  width: 75px;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+  color: white;
+  font-family: "Merriweather Sans", sans-serif;
+  cursor: pointer;
 }
 
 .form.hidden {

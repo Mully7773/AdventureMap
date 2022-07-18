@@ -6,7 +6,10 @@ const inputDuration = document.querySelector(".form-input--duration");
 const inputActivity = document.querySelector(".form-input--activity");
 const inputCost = document.querySelector(".form-input--cost");
 const adventureContainer = document.querySelector(".adventures");
+const closeButton = document.querySelector(".close-button");
+const clearAll = document.querySelector(".clear-all");
 
+console.log(adventureContainer);
 const months = [
   "January",
   "February",
@@ -100,6 +103,10 @@ class App {
     form.addEventListener("submit", this._submitAdventure.bind(this));
     //Move to popup functionality
     adventureContainer.addEventListener("click", this._moveToPopup.bind(this));
+
+    // closeButton.addEventListener("click", this._deleteAdventure().bind(this));
+
+    clearAll.addEventListener("click", this.reset);
   }
 
   _findPosition() {
@@ -278,10 +285,11 @@ class App {
   }
 
   _renderAdventure(adventure) {
+    clearAll.classList.remove("hidden");
     const html = `<li class="adventure adventure--${adventure.type}" data-id="${
       adventure.id
     }">
-    <button>&#10006</button>
+    <button class="close-button">&#10006</button>
     <h2 class="adventure-name">${adventure.description}</h2>
     <div class="adventure-details">
       <span class="adventure-icon">${
@@ -324,14 +332,14 @@ class App {
 
   _moveToPopup(e) {
     const adventureEl = e.target.closest(".adventure");
-    console.log(adventureEl);
+    // console.log(adventureEl);
 
     if (!adventureEl) return;
 
     const adventure = this.#adventures.find(
       (advent) => advent.id === adventureEl.dataset.id
     );
-    console.log(adventure);
+    // console.log(adventure);
 
     this.#map.setView(adventure.coords, this.#mapZoomLevel, {
       animate: true,
@@ -359,9 +367,64 @@ class App {
   }
 
   reset() {
-    localStorage.removeItem("adventures");
-    location.reload();
+    if (confirm("Are you sure you wish to delete all of your adventures?")) {
+      localStorage.removeItem("adventures");
+      location.reload();
+    }
+    // let store = JSON.parse(localStorage.getItem("adventures")) || [];
   }
+
+  // _deleteAdventure(e) {
+  //   console.log(e.target);
+  //   const adventureEl = e.target.closest(".adventure");
+  //   console.log(adventureEl);
+
+  //   if (!adventureEl) return;
+
+  //   adventureEl.classList.add("hidden");
+
+  //   console.log("delete");
+  // e.stopPropagation();
+  // if (e.target.classList.contains("btnDelete")) {
+  //   this.reset();
+  //   let li = e.target.parentElement;
+  //   adventureContainer.removeChild(li);
+  // }
+  // console.log("test");
+  // console.log(this.adventure.id);
+
+  // const adventureEl = e.target.closest(".adventure");
+  // // console.log(adventureEl);
+  // const adventure = this.#adventures.find(
+  //   (advent) => advent.id === adventureEl.dataset.id
+  // );
+  // console.log(adventure);
+  // localStorage.removeItem("adventure");
+  // location.reload();
+  // closeButton.addEventListener("click", function () {
+  //   console.log("test");
+  // });
+  // }
 }
 
+// const deleteAdventure = () => {
+//   // e.stopPropagation();
+//   const buttonEl = e.target.closest();
+//   closeButton.addEventListener("click", function () {
+//     console.log("test");
+//   });
+// };
+// deleteAdventure();
+
+closeButton.addEventListener("click", function (e) {
+  console.log(e.target);
+  const adventureEl = e.target.closest(".adventure");
+  console.log(adventureEl);
+
+  if (!adventureEl) return;
+
+  adventureEl.classList.add("hidden");
+});
+
+console.log(closeButton);
 const app = new App();
