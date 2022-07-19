@@ -128,17 +128,65 @@ class App {
     //   console.log(latitude, longitude);
     const coords = [latitude, longitude];
 
-    this.#map = L.map("map", { zoomControl: false }).setView(
-      coords,
-      this.#mapZoomLevel
-    );
+    this.#map = L.map("map", {
+      zoomControl: false,
+    }).setView(coords, this.#mapZoomLevel);
 
-    L.control.zoom({ position: "topright" }).addTo(this.#map);
+    L.control.zoom({ position: "bottomright" }).addTo(this.#map);
 
-    L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
-      maxZoom: 20,
-      subdomains: ["mt0", "mt1", "mt2", "mt3"],
-    }).addTo(this.#map);
+    const basemaps = {
+      Default: L.tileLayer(
+        "http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+        {
+          attribution:
+            '&copy; <a href="https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-maps" target="_blank">Google Maps</a> contributors',
+          maxZoom: 20,
+          subdomains: ["mt0", "mt1", "mt2", "mt3"],
+        }
+      ),
+      OpenStreetMaps: L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }
+      ),
+      Satellite: L.tileLayer(
+        "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+        {
+          attribution:
+            '&copy; <a href="https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-maps" target="_blank">Google Maps</a> contributors',
+          maxZoom: 20,
+          subdomains: ["mt0", "mt1", "mt2", "mt3"],
+        }
+      ),
+      Topography: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
+        attribution:
+          '&copy; <a href="https://www.mundialis.de/en/" target="_blank">Mundialis</a> contributors',
+        layers: "TOPO-WMS",
+      }),
+    };
+
+    // ).addTo(this.#map)};
+    const layerControl = L.control.layers(basemaps);
+    layerControl.addTo(this.#map);
+    basemaps.Default.addTo(this.#map);
+
+    // const overlays = {
+    //   GoogleSatellite: L.tileLayer(
+    //     "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+    //     {
+    //       attribution:
+    //         '&copy; <a href="https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-maps" target="_blank">Google Maps</a> contributors',
+    //       maxZoom: 20,
+    //       subdomains: ["mt0", "mt1", "mt2", "mt3"],
+    //     }
+    //   ),
+    // };
+
+    // L.control
+    //   .layers(googleMap, overlays, { position: "bottomright" })
+    //   .addTo(this.#map);
 
     // L.basemapsSwitcher(
     //   [

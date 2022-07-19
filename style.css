@@ -273,6 +273,10 @@ footer {
 /* background-color: red; */
 /* } */
 
+a:link a:link:visited {
+  text-decoration: none;
+}
+
 /* Leaflet styles: */
 .leaflet-control-zoom-in {
   background-color: red;
@@ -344,6 +348,25 @@ img.color-change-friends {
   filter: hue-rotate(275deg);
 }
 
-.leaflet-bottom {
+.leaflet-control-layers-toggle {
+  background-color: #2c3639;
+  border: none !important;
+  height: 55px !important;
+  width: 55px !important;
+}
+
+.leaflet-control-layers {
+  border: none !important;
+  background-color: #2c3639 !important;
+}
+
+.leaflet-control-layers-list {
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 20px;
+  background-color: #2c3639;
+  color: white;
+}
+
+*/ .leaflet-bottom {
   z-index: 800 !important;
 }
