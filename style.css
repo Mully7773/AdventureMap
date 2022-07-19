@@ -176,8 +176,8 @@ footer {
   border-bottom: 2px solid rgb(244, 12, 12);
 }
 .adventure--friends {
-  border-left: 2px solid rgb(5, 94, 5);
-  border-bottom: 2px solid rgb(5, 94, 5);
+  border-left: 2px solid rgb(11, 169, 11);
+  border-bottom: 2px solid rgb(11, 169, 11);
 }
 
 #close-button {
@@ -274,6 +274,38 @@ footer {
 /* } */
 
 /* Leaflet styles: */
+.leaflet-control-zoom-in {
+  background-color: red;
+  color: red;
+}
+
+.leaflet-control-zoom-out {
+  background-color: red;
+  color: red;
+}
+
+.leaflet-touch .leaflet-bar {
+  border: none !important;
+}
+
+.leaflet-touch .leaflet-control-zoom-in {
+  background-color: #2c3639;
+  color: white;
+}
+
+.leaflet-touch .leaflet-control-zoom-in:hover {
+  background-color: #3f4e4f;
+}
+
+.leaflet-touch .leaflet-control-zoom-out {
+  background-color: #2c3639;
+  color: white;
+}
+
+.leaflet-touch .leaflet-control-zoom-out:hover {
+  background-color: #3f4e4f;
+}
+
 .leaflet-popup .leaflet-popup-content-wrapper {
   background-color: #3f4e4f;
   color: #ececec;
@@ -298,8 +330,8 @@ footer {
   border-bottom: 2px solid rgb(244, 12, 12);
 }
 .friends-popup .leaflet-popup-content-wrapper {
-  border-left: 2px solid rgb(5, 94, 5);
-  border-bottom: 2px solid rgb(5, 94, 5);
+  border-left: 2px solid rgb(11, 169, 11);
+  border-bottom: 2px solid rgb(11, 169, 11);
 }
 
 img.color-change-solo {

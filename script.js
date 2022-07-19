@@ -318,7 +318,7 @@ class App {
     </div>
 
     <div class="adventure-details">
-      <span class="adventure-icon">🚶‍♂️</span>
+      <span class="adventure-icon">⛳</span>
       <span class="adventure-value">${adventure.activity[0].toUpperCase()}${adventure.activity.slice(
       1
     )}
