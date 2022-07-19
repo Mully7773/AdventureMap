@@ -167,62 +167,9 @@ class App {
       }),
     };
 
-    // ).addTo(this.#map)};
     const layerControl = L.control.layers(basemaps);
     layerControl.addTo(this.#map);
     basemaps.Default.addTo(this.#map);
-
-    // const overlays = {
-    //   GoogleSatellite: L.tileLayer(
-    //     "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-    //     {
-    //       attribution:
-    //         '&copy; <a href="https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-maps" target="_blank">Google Maps</a> contributors',
-    //       maxZoom: 20,
-    //       subdomains: ["mt0", "mt1", "mt2", "mt3"],
-    //     }
-    //   ),
-    // };
-
-    // L.control
-    //   .layers(googleMap, overlays, { position: "bottomright" })
-    //   .addTo(this.#map);
-
-    // L.basemapsSwitcher(
-    //   [
-    //     {
-    //       layer: L.tileLayer(
-    //         "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    //         {
-    //           attribution:
-    //             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    //         }
-    //       ).addTo(this.#map), //DEFAULT MAP
-    //       icon: "first",
-    //       name: "Map one",
-    //     },
-    //     {
-    //       layer: L.tileLayer(
-    //         "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
-    //         {
-    //           attribution:
-    //             '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-    //         }
-    //       ),
-    //       icon: "second",
-    //       name: "Map two",
-    //     },
-    //   ],
-    //   { position: "bottomright" }
-    // ).addTo(this.#map);
-
-    // const googleSatellite = L.tileLayer(
-    //   "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-    //   {
-    //     maxZoom: 20,
-    //     subdomains: ["mt0", "mt1", "mt2", "mt3"],
-    //   }
-    // );
 
     this.#map.on("click", this._renderForm.bind(this));
 
@@ -248,7 +195,6 @@ class App {
   }
 
   _submitAdventure(e) {
-    // console.log(mapEvent);
     e.preventDefault();
 
     // Get data from form
@@ -413,7 +359,6 @@ class App {
     const adventureData = JSON.parse(localStorage.getItem("adventures"));
     // if (!adventureData) return;
     if (e.target && e.target.id == "close-button") {
-      // console.log("hi");
       if (confirm("Are you sure you wish to delete this adventure?")) {
         const adventureEl = e.target.closest(".adventure");
 
@@ -457,51 +402,8 @@ class App {
       localStorage.removeItem("adventures");
       location.reload();
     }
-    // let store = JSON.parse(localStorage.getItem("adventures")) || [];
   }
-
-  //   console.log("delete");
-  // e.stopPropagation();
-  // if (e.target.classList.contains("btnDelete")) {
-  //   this.reset();
-  //   let li = e.target.parentElement;
-  //   adventureContainer.removeChild(li);
-  // }
-  // console.log("test");
-  // console.log(this.adventure.id);
-
-  // const adventureEl = e.target.closest(".adventure");
-  // // console.log(adventureEl);
-  // const adventure = this.#adventures.find(
-  //   (advent) => advent.id === adventureEl.dataset.id
-  // );
-  // console.log(adventure);
-  // localStorage.removeItem("adventure");
-  // location.reload();
-  // closeButton.addEventListener("click", function () {
-  //   console.log("test");
-  // });
-  // }
 }
-
-// const deleteAdventure = () => {
-//   // e.stopPropagation();
-//   const buttonEl = e.target.closest();
-//   closeButton.addEventListener("click", function () {
-//     console.log("test");
-//   });
-// };
-// deleteAdventure();
-
-// closeButton.addEventListener("click", function (e) {
-//   console.log(e.target);
-//   const adventureEl = e.target.closest(".adventure");
-//   console.log(adventureEl);
-//   console.log("Bweeeeeeeeeeeeeeeeeeeeeeeeeee!");
-//   if (!adventureEl) return;
-
-//   adventureEl.classList.add("hidden");
-// });
 
 console.log(closeButton);
 const app = new App();
