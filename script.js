@@ -6,6 +6,7 @@ const inputDuration = document.querySelector(".form-input--duration");
 const days = document.querySelector(".days");
 const hours = document.querySelector(".hours");
 const minutes = document.querySelector(".minutes");
+const selectedDate = document.querySelector(".form-input--date");
 const inputActivity = document.querySelector(".form-input--activity");
 const inputCost = document.querySelector(".form-input--cost");
 const adventureContainer = document.querySelector(".adventures");
@@ -13,8 +14,8 @@ const liContainer = document.querySelector(".adventure");
 const closeButton = document.querySelector(".close-button");
 const closeButtonContainer = document.querySelector(".close-button-container");
 const clearAll = document.querySelector(".clear-all");
+const header = document.querySelector(".sidebar-header");
 
-console.log(adventureContainer);
 const months = [
   "January",
   "February",
@@ -33,19 +34,22 @@ class Adventure {
   date = new Date();
   id = uuidv4(); // Unique ID
 
-  constructor(coords, activity, cost, day, hour, minute) {
+  constructor(coords, activity, cost, day, hour, minute, selectedDate) {
     this.coords = coords; //Must be an array for leaflet: [lat, lng]
     this.activity = activity; //string
     this.cost = cost; // number
     this.day = day;
     this.hour = hour;
     this.minute = minute;
-    // this.duration = duration; // number in minutes
+
+    this.selectedDate = selectedDate;
   }
 
   //In order to use it in popup content
   _setDate() {
-    this.currentDate = `${months[this.date.getMonth()]} ${this.date.getDate()}`;
+    this.currentDate = `${months[new Date(this.selectedDate).getMonth()]} ${
+      new Date(this.selectedDate).getDate() + 1
+    }, ${new Date(this.selectedDate).getFullYear()}`;
   }
   _setDescription() {
     this.description = `${this.activity[0].toUpperCase()}${this.activity.slice(
@@ -56,14 +60,17 @@ class Adventure {
         : this.type === "family"
         ? "with family"
         : "with friend(s)"
-    } on ${months[this.date.getMonth()]} ${this.date.getDate()}`;
+    } on
+     ${months[new Date(this.selectedDate).getMonth()]} ${
+      new Date(this.selectedDate).getDate() + 1
+    }, ${new Date(this.selectedDate).getFullYear()}`;
   }
 }
-
+// ${months[this.date.getMonth()]} ${this.date.getDate()}
 class Solo extends Adventure {
   type = "solo";
-  constructor(coords, activity, cost, day, hour, minute) {
-    super(coords, activity, cost, day, hour, minute);
+  constructor(coords, activity, cost, day, hour, minute, selectedDate) {
+    super(coords, activity, cost, day, hour, minute, selectedDate);
     this._setDescription();
     this._setDate();
   }
@@ -71,8 +78,8 @@ class Solo extends Adventure {
 
 class Family extends Adventure {
   type = "family";
-  constructor(coords, activity, cost, day, hour, minute) {
-    super(coords, activity, cost, day, hour, minute);
+  constructor(coords, activity, cost, day, hour, minute, selectedDate) {
+    super(coords, activity, cost, day, hour, minute, selectedDate);
     this._setDescription();
     this._setDate();
   }
@@ -80,8 +87,8 @@ class Family extends Adventure {
 
 class Friends extends Adventure {
   type = "friends";
-  constructor(coords, activity, cost, day, hour, minute) {
-    super(coords, activity, cost, day, hour, minute);
+  constructor(coords, activity, cost, day, hour, minute, selectedDate) {
+    super(coords, activity, cost, day, hour, minute, selectedDate);
     this._setDescription();
     this._setDate();
   }
@@ -199,6 +206,7 @@ class App {
       days.value =
       hours.value =
       minutes.value =
+      selectedDate.value =
         "";
     form.style.display = "none";
     form.classList.add("hidden");
@@ -215,6 +223,7 @@ class App {
     const day = +days.value;
     const hour = +hours.value;
     const minute = +minutes.value;
+    const myDate = selectedDate.value;
     const { lat, lng } = this.#mapEvent.latlng;
     let adventure;
 
@@ -245,16 +254,40 @@ class App {
 
     // If activity is solo, create solo object
     if (type === "solo") {
-      adventure = new Solo([lat, lng], activity, cost, day, hour, minute);
+      adventure = new Solo(
+        [lat, lng],
+        activity,
+        cost,
+        day,
+        hour,
+        minute,
+        myDate
+      );
     }
     // If activity is family, create family object
     if (type === "family") {
-      adventure = new Family([lat, lng], activity, cost, day, hour, minute);
+      adventure = new Family(
+        [lat, lng],
+        activity,
+        cost,
+        day,
+        hour,
+        minute,
+        myDate
+      );
     }
 
     // If activity is friend, create friend object
     if (type === "friends") {
-      adventure = new Friends([lat, lng], activity, cost, day, hour, minute);
+      adventure = new Friends(
+        [lat, lng],
+        activity,
+        cost,
+        day,
+        hour,
+        minute,
+        myDate
+      );
     }
 
     //Add new activity to adventure array
@@ -315,6 +348,7 @@ class App {
       adventure.id
     }">
     <div class="button-container">
+   
     <button id="close-button">&#10006</button>
     </div>
    
@@ -432,4 +466,5 @@ class App {
 }
 
 console.log(closeButton);
+
 const app = new App();

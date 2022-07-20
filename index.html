@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" type="image/png" href="./img/icon.png" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Cinzel+Decorative:wght@300;400;600;700;800&display=swap"
       rel="stylesheet"
@@ -17,6 +18,7 @@
       integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
       crossorigin=""
     />
+
     <script
       defer
       src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"
@@ -66,11 +68,6 @@
 
           <div class="form-row">
             <label class="form-label">Duration</label>
-            <!-- <div class="duration-buttons">
-              <button class="minute-button">m</button>
-              <button class="hour-button">h</button>
-              <button class="day-button">d</button>
-            </div> -->
             <div class="margin-right-duration">
               <input
                 class="form-input form-input--duration duration days"
@@ -89,6 +86,11 @@
                 placeholder="m"
               />
             </div>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label">Date</label>
+            <input type="date" class="form-input form-input--date" />
           </div>
 
           <!-- We must include this button in order to submit a form with multiple fields (HTML 2 specification) -->
