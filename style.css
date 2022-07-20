@@ -299,7 +299,53 @@ footer {
 }
 
 .form-btn {
-  display: none;
+  display: flex;
+  border: none;
+  font-family: "Merriweather Sans", sans-serif;
+  background-color: #ddd5d0;
+  padding: 0.4rem 1.2rem;
+  font-size: 1.3rem;
+  border-radius: 3px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.arrow-icon {
+  height: 15px;
+  width: 15px;
+}
+
+.form-btn:hover {
+  background-color: #ddd5d0dd;
+  animation: pulse 1s 1;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #ddd5d0;
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 5px rgba(244, 157, 22, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(244, 157, 22, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 #ddd5d0;
+    box-shadow: 0 0 0 0 #ddd5d0;
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 5px rgba(244, 157, 22, 0);
+    box-shadow: 0 0 0 5px rgba(244, 157, 22, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(244, 157, 22, 0);
+    box-shadow: 0 0 0 0 rgba(244, 157, 22, 0);
+  }
 }
 
 .day-unit {
