@@ -3,6 +3,9 @@
 const form = document.querySelector(".form");
 const inputType = document.querySelector(".form-input--type");
 const inputDuration = document.querySelector(".form-input--duration");
+const days = document.querySelector(".days");
+const hours = document.querySelector(".hours");
+const minutes = document.querySelector(".minutes");
 const inputActivity = document.querySelector(".form-input--activity");
 const inputCost = document.querySelector(".form-input--cost");
 const adventureContainer = document.querySelector(".adventures");
@@ -30,11 +33,14 @@ class Adventure {
   date = new Date();
   id = uuidv4(); // Unique ID
 
-  constructor(coords, activity, cost, duration) {
+  constructor(coords, activity, cost, day, hour, minute) {
     this.coords = coords; //Must be an array for leaflet: [lat, lng]
     this.activity = activity; //string
     this.cost = cost; // number
-    this.duration = duration; // number in minutes
+    this.day = day;
+    this.hour = hour;
+    this.minute = minute;
+    // this.duration = duration; // number in minutes
   }
 
   //In order to use it in popup content
@@ -56,8 +62,8 @@ class Adventure {
 
 class Solo extends Adventure {
   type = "solo";
-  constructor(coords, activity, cost, duration) {
-    super(coords, activity, cost, duration);
+  constructor(coords, activity, cost, day, hour, minute) {
+    super(coords, activity, cost, day, hour, minute);
     this._setDescription();
     this._setDate();
   }
@@ -65,8 +71,8 @@ class Solo extends Adventure {
 
 class Family extends Adventure {
   type = "family";
-  constructor(coords, activity, cost, duration) {
-    super(coords, activity, cost, duration);
+  constructor(coords, activity, cost, day, hour, minute) {
+    super(coords, activity, cost, day, hour, minute);
     this._setDescription();
     this._setDate();
   }
@@ -74,8 +80,8 @@ class Family extends Adventure {
 
 class Friends extends Adventure {
   type = "friends";
-  constructor(coords, activity, cost, duration) {
-    super(coords, activity, cost, duration);
+  constructor(coords, activity, cost, day, hour, minute) {
+    super(coords, activity, cost, day, hour, minute);
     this._setDescription();
     this._setDate();
   }
@@ -188,7 +194,12 @@ class App {
 
   _hideForm() {
     //Empty inputs
-    inputActivity.value = inputCost.value = inputDuration.value = "";
+    inputActivity.value =
+      inputCost.value =
+      days.value =
+      hours.value =
+      minutes.value =
+        "";
     form.style.display = "none";
     form.classList.add("hidden");
     setTimeout(() => (form.style.display = "grid"), 1000);
@@ -201,7 +212,9 @@ class App {
     const type = inputType.value;
     const activity = inputActivity.value;
     const cost = +inputCost.value;
-    const duration = +inputDuration.value;
+    const day = +days.value;
+    const hour = +hours.value;
+    const minute = +minutes.value;
     const { lat, lng } = this.#mapEvent.latlng;
     let adventure;
 
@@ -214,27 +227,34 @@ class App {
         return false;
       }
       if (!Number.isFinite(cost) || cost < 0)
-        return alert("Please input a positive number or zero");
-
-      if (!Number.isFinite(duration) || duration <= 0) {
         return alert(
-          "Please input the approximate number of minutes you spent having fun"
+          "Please input a positive number or zero in the money field"
+        );
+
+      if (
+        !Number.isFinite(day) ||
+        !Number.isFinite(hour) ||
+        !Number.isFinite(minute) ||
+        (day == 0) & (hour == 0) & (minute == 0)
+      ) {
+        return alert(
+          "Please enter a single number in at least one of the days (d), hours (h), or minutes (m) fields"
         );
       }
     }
 
     // If activity is solo, create solo object
     if (type === "solo") {
-      adventure = new Solo([lat, lng], activity, cost, duration);
+      adventure = new Solo([lat, lng], activity, cost, day, hour, minute);
     }
     // If activity is family, create family object
     if (type === "family") {
-      adventure = new Family([lat, lng], activity, cost, duration);
+      adventure = new Family([lat, lng], activity, cost, day, hour, minute);
     }
 
     // If activity is friend, create friend object
     if (type === "friends") {
-      adventure = new Friends([lat, lng], activity, cost, duration);
+      adventure = new Friends([lat, lng], activity, cost, day, hour, minute);
     }
 
     //Add new activity to adventure array
@@ -294,7 +314,9 @@ class App {
     const html = `<li class="adventure adventure--${adventure.type}" data-id="${
       adventure.id
     }">
+    <div class="button-container">
     <button id="close-button">&#10006</button>
+    </div>
    
     <h2 class="adventure-name">${adventure.description}</h2>
     <div class="adventure-details">
@@ -328,8 +350,12 @@ class App {
 
     <div class="adventure-details">
       <span class="adventure-icon">⌚</span>
-      <span class="adventure-value">${adventure.duration}</span>
-      <span class="adventure-unit">min</span>
+      <span class="adventure-value">${adventure.day}</span>
+      <span class="adventure-unit day-unit">day</span>
+      <span class="adventure-value">${adventure.hour}</span>
+      <span class="adventure-unit hour-unit">hr</span>
+      <span class="adventure-value">${adventure.minute}</span>
+      <span class="adventure-unit minute-unit">min</span>
     </div>
   </li>`;
 

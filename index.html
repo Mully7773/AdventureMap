@@ -66,7 +66,29 @@
 
           <div class="form-row">
             <label class="form-label">Duration</label>
-            <input class="form-input form-input--duration" placeholder="min" />
+            <!-- <div class="duration-buttons">
+              <button class="minute-button">m</button>
+              <button class="hour-button">h</button>
+              <button class="day-button">d</button>
+            </div> -->
+            <div class="margin-right-duration">
+              <input
+                class="form-input form-input--duration duration days"
+                placeholder="d"
+              />
+            </div>
+            <div class="margin-right-duration">
+              <input
+                class="form-input form-input--duration duration hours"
+                placeholder="h"
+              />
+            </div>
+            <div>
+              <input
+                class="form-input form-input--duration duration minutes"
+                placeholder="m"
+              />
+            </div>
           </div>
 
           <!-- We must include this button in order to submit a form with multiple fields (HTML 2 specification) -->
@@ -75,6 +97,7 @@
         </form>
 
         <!-- <li class="adventure adventure--solo" data-id="1111">
+          <button id="edit-button">&#9998</button>
           <button id="close-button">&#10006</button>
           <h2 class="adventure-name">(Activity) by myself on July 14</h2>
           <div class="adventure-details">
