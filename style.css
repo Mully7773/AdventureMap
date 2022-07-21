@@ -199,6 +199,20 @@ footer {
 #close-button:hover {
   color: white;
 }
+#edit-button {
+  width: 15px;
+  height: 16px;
+  background-color: #3f4e4f;
+  border: none;
+  justify-self: flex-end;
+  /* grid-column: 4 / 5; */
+  margin-top: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+#edit-button:hover {
+  color: white;
+}
 
 .form {
   font-family: "Merriweather Sans", sans-serif;

@@ -74,11 +74,15 @@ class Adventure {
         ? "with family"
         : "with friend(s)"
     } on
-     ${months[new Date(this.selectedDate).getMonth()]} ${new Date(
-      this.selectedDate
-    ).getUTCDate()}, ${new Date(this.selectedDate).getFullYear()}`;
+    ${moment(this.selectedDate).format("MMMM Do YYYY")}
+`;
   }
 }
+
+// ${months[new Date(this.selectedDate).getMonth()]} ${new Date(
+//   this.selectedDate
+// ).getUTCDate()}, ${new Date(this.selectedDate).getFullYear()}
+
 // ${months[this.date.getMonth()]} ${this.date.getDate()}
 class Solo extends Adventure {
   type = "solo";
@@ -135,6 +139,8 @@ class App {
     clearAll.addEventListener("click", this.reset);
 
     document.addEventListener("click", this._deleteAdventure.bind(this));
+
+    document.addEventListener("click", this._editAdventure.bind(this));
   }
 
   _findPosition() {
@@ -361,7 +367,7 @@ class App {
       adventure.id
     }">
     <div class="button-container">
-    
+    <button id="edit-button">&#9998</button>
     <button id="close-button">&#10006</button>
     </div>
    
@@ -450,6 +456,26 @@ class App {
         adventureEl.classList.add("hidden");
       }
       location.reload();
+    }
+  }
+  _editAdventure(e) {
+    const adventureEl = e.target.closest(".adventure");
+    // console.log(adventureEl);
+
+    if (!adventureEl) return;
+
+    const adventure = this.#adventures.find(
+      (advent) => advent.id === adventureEl.dataset.id
+    );
+
+    const adventureValue = document.querySelector(".adventure-value");
+
+    console.log(adventure.coords);
+    this.#mapEvent = adventure.coords;
+    if (e.target && e.target.id == "edit-button") {
+      this._renderForm(this.#mapEvent);
+      // adventureValue.contentEditable = true;
+      console.log(adventureValue);
     }
   }
 
