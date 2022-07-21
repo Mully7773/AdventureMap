@@ -30,6 +30,11 @@ const months = [
   "November",
   "December",
 ];
+
+const day = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+  23, 24, 25, 26, 27, 28, 29, 30, 31,
+];
 class Adventure {
   date = new Date();
   id = uuidv4(); // Unique ID
@@ -52,6 +57,14 @@ class Adventure {
     }, ${new Date(this.selectedDate).getFullYear()}`;
   }
   _setDescription() {
+    const adventureDate = new Date(this.selectedDate);
+    const result =
+      adventureDate.toLocaleString("default", { month: "long" }) +
+      adventureDate.getDate() +
+      ", " +
+      adventureDate.getFullYear();
+    console.log(result);
+
     this.description = `${this.activity[0].toUpperCase()}${this.activity.slice(
       1
     )} ${
@@ -61,9 +74,9 @@ class Adventure {
         ? "with family"
         : "with friend(s)"
     } on
-     ${months[new Date(this.selectedDate).getMonth()]} ${
-      new Date(this.selectedDate).getDate() + 1
-    }, ${new Date(this.selectedDate).getFullYear()}`;
+     ${months[new Date(this.selectedDate).getMonth()]} ${new Date(
+      this.selectedDate
+    ).getUTCDate()}, ${new Date(this.selectedDate).getFullYear()}`;
   }
 }
 // ${months[this.date.getMonth()]} ${this.date.getDate()}
@@ -348,7 +361,7 @@ class App {
       adventure.id
     }">
     <div class="button-container">
-   
+    
     <button id="close-button">&#10006</button>
     </div>
    
