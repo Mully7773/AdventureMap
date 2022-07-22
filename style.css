@@ -40,10 +40,6 @@ body::-webkit-scrollbar-thumb {
   border: #397367 ridge 8px;
   height: 100%;
   margin-bottom: 1rem;
-  /* display: grid;
-  grid-template-columns: 1fr; */
-  /* grid-template-columns: 1fr; */
-  /* row-gap: 1rem; */
 }
 
 .flex-container {
@@ -62,21 +58,16 @@ body::-webkit-scrollbar-thumb {
 
 footer {
   font-family: "Merriweather Sans", sans-serif;
-  font-size: 14px;
+  font-size: 8px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* grid-column: 1 / -1; */
-  /* align-self: center;
-  justify-self: center;
-  z-index: 1000; */
+  gap: 1px;
 }
 
 .sidebar {
   font-family: "Cinzel Decorative", cursive !important;
-  /* grid-column: 1 / -1; */
-  /* position: absolute;
-  top: 0;*/
   z-index: 1000;
   padding: 3rem 5rem 4rem 4rem;
   display: flex;
@@ -106,7 +97,6 @@ footer {
 
 .adventures {
   list-style: none;
-  /* height: 100vh; */
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -128,7 +118,6 @@ footer {
   transition: all 0.5s, transform 1ms;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  /* margin-top: -0.25rem; */
 }
 
 .adventure-name {
@@ -192,27 +181,26 @@ footer {
   background-color: #3f4e4f;
   border: none;
   justify-self: flex-end;
-  /* grid-column: 4 / 5; */
   margin-top: 5px;
   cursor: pointer;
 }
 #close-button:hover {
   color: white;
 }
-#edit-button {
+
+/* #edit-button {
   width: 15px;
   height: 16px;
   background-color: #3f4e4f;
   border: none;
   justify-self: flex-end;
-  /* grid-column: 4 / 5; */
   margin-top: 5px;
   margin-right: 5px;
   cursor: pointer;
 }
 #edit-button:hover {
   color: white;
-}
+} */
 
 .form {
   font-family: "Merriweather Sans", sans-serif;
@@ -231,25 +219,6 @@ footer {
 .hidden {
   display: none;
 }
-
-/* .duration-buttons {
-  padding-right: 5px;
-}
-
-.minute-button {
-  font-size: 7px;
-  cursor: pointer;
-}
-
-.hour-button {
-  font-size: 7px;
-  cursor: pointer;
-}
-
-.day-button {
-  font-size: 7px;
-  cursor: pointer;
-} */
 
 .clear-all {
   background-color: #2c3639;
@@ -308,7 +277,6 @@ footer {
 
 .duration {
   width: 100%;
-  /* margin-right: 5px; */
   padding: 0.4rem 0.6rem;
 }
 
@@ -372,27 +340,11 @@ footer {
   margin-right: 5px;
 }
 
-/* #map { */
-/* grid-column: 1 / -1; */
-/* z-index: 200; */
-/* background-color: red; */
-/* } */
-
 a:link a:link:visited {
   text-decoration: none;
 }
 
 /* Leaflet styles: */
-.leaflet-control-zoom-in {
-  background-color: red;
-  color: red;
-}
-
-.leaflet-control-zoom-out {
-  background-color: red;
-  color: red;
-}
-
 .leaflet-touch .leaflet-bar {
   border: none !important;
 }

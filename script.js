@@ -31,10 +31,6 @@ const months = [
   "December",
 ];
 
-const day = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-  23, 24, 25, 26, 27, 28, 29, 30, 31,
-];
 class Adventure {
   date = new Date();
   id = uuidv4(); // Unique ID
@@ -114,13 +110,6 @@ class Friends extends Adventure {
     this._setDate();
   }
 }
-
-//Test data:
-// const solo1 = new Solo([34, 52], "Bowling", 77, 120);
-// const family1 = new Family([34, 52.5], "Camping", 200, 500);
-// const friends1 = new Friends([34, 53], "Arcade", 85, 300);
-
-// console.log(solo1, family1, friends1);
 
 class App {
   #map;
@@ -371,6 +360,7 @@ class App {
       adventure.id
     }">
     <div class="button-container">
+    <!--UNCOMMENT TO DISPLAY -->
     <!-- <button id="edit-button">&#9998</button> -->
     <button id="close-button">&#10006</button>
     </div>
@@ -507,7 +497,5 @@ class App {
     }
   }
 }
-
-console.log(closeButton);
 
 const app = new App();
