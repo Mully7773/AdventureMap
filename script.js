@@ -52,18 +52,22 @@ class Adventure {
 
   //In order to use it in popup content
   _setDate() {
-    this.currentDate = `${months[new Date(this.selectedDate).getMonth()]} ${
-      new Date(this.selectedDate).getDate() + 1
-    }, ${new Date(this.selectedDate).getFullYear()}`;
+    this.currentDate = `
+    ${moment(this.selectedDate).format("MMMM D, YYYY")}`;
   }
+
+  // ${months[new Date(this.selectedDate).getMonth()]} ${
+  //   new Date(this.selectedDate).getDate() + 1
+  // }, ${new Date(this.selectedDate).getFullYear()}`;
+
   _setDescription() {
-    const adventureDate = new Date(this.selectedDate);
-    const result =
-      adventureDate.toLocaleString("default", { month: "long" }) +
-      adventureDate.getDate() +
-      ", " +
-      adventureDate.getFullYear();
-    console.log(result);
+    // const adventureDate = new Date(this.selectedDate);
+    // const result =
+    //   adventureDate.toLocaleString("default", { month: "long" }) +
+    //   adventureDate.getDate() +
+    //   ", " +
+    //   adventureDate.getFullYear();
+    // console.log(result);
 
     this.description = `${this.activity[0].toUpperCase()}${this.activity.slice(
       1
@@ -74,7 +78,7 @@ class Adventure {
         ? "with family"
         : "with friend(s)"
     } on
-    ${moment(this.selectedDate).format("MMMM Do YYYY")}
+    ${moment(this.selectedDate).format("MMMM D, YYYY")}
 `;
   }
 }
@@ -139,8 +143,6 @@ class App {
     clearAll.addEventListener("click", this.reset);
 
     document.addEventListener("click", this._deleteAdventure.bind(this));
-
-    document.addEventListener("click", this._editAdventure.bind(this));
   }
 
   _findPosition() {
@@ -367,7 +369,7 @@ class App {
       adventure.id
     }">
     <div class="button-container">
-    <button id="edit-button">&#9998</button>
+  
     <button id="close-button">&#10006</button>
     </div>
    
@@ -456,26 +458,6 @@ class App {
         adventureEl.classList.add("hidden");
       }
       location.reload();
-    }
-  }
-  _editAdventure(e) {
-    const adventureEl = e.target.closest(".adventure");
-    // console.log(adventureEl);
-
-    if (!adventureEl) return;
-
-    const adventure = this.#adventures.find(
-      (advent) => advent.id === adventureEl.dataset.id
-    );
-
-    const adventureValue = document.querySelector(".adventure-value");
-
-    console.log(adventure.coords);
-    this.#mapEvent = adventure.coords;
-    if (e.target && e.target.id == "edit-button") {
-      this._renderForm(this.#mapEvent);
-      // adventureValue.contentEditable = true;
-      console.log(adventureValue);
     }
   }
 
