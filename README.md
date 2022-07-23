@@ -19,6 +19,16 @@ This is an interactive map application I developed using HTML, CSS, and JavaScri
 
 <br>
 
+## Screenshots
+
+![Screenshot of default map with one adventure](./screenshots/default-screen.png)
+
+![Screenshot of satellite map with three advenures zoomed-out](./screenshots/satellite-screen.png)
+
+![Screenshot of topography map with three advenures zoomed-out](./screenshots/topography-screen.png)
+
+<br>
+
 ## Functionality
 
 Users are presented with a map they can click on. The location on the map where the user clicks should be where their adventure occurred or will occur. Users are then presented with a form. The form has various inputs from which the user may provide details pertaining to their adventure. These details include "type", "activity", "money" (or cost), "date", and "duration". The type field is split into three options: solo, family, and friends. Users can select any date via the date picker in the date field. In addition, the duration field has three separate inputs, which allows the user to input a more specific adventure duration (e.g. 3 6 30 = 3 days, 6 hours, 30 minutes). Form validation currently displays via alerts.
@@ -45,6 +55,7 @@ CSS
 JavaScript
 <br>
 UUID (third-party ID generator)
+<br>
 Leaflet (third-party library) - Leaflet is used to generate the map, map tiles, map layers, and zoom-in/zoom-out buttons
 <br>
 Local Storage API - Used to store persistent data (user adventures)
