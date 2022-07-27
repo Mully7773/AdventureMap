@@ -410,6 +410,7 @@ class App {
   }
 
   _moveToPopup(e) {
+    if (!this.#map) return;
     const adventureEl = e.target.closest(".adventure");
     // console.log(adventureEl);
 
