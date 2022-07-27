@@ -241,6 +241,10 @@ class App {
 
     // Data validation
     if (type === "solo" || type === "family" || type === "friends") {
+      if (myDate === "") {
+        alert("Please enter the date of your adventure");
+        return false;
+      }
       if (!activity.trim() || activity.length > 10) {
         alert(
           "Please input an activity less than 10 characters. Brevity is the soul of wit!"
@@ -316,6 +320,8 @@ class App {
 
     //Save to local storage
     this._setLocalStorage();
+
+    console.log(myDate);
   }
 
   _renderAdventureMarker(adventure) {
